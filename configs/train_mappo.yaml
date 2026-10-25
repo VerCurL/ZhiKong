@@ -1,0 +1,90 @@
+# MAPPO 训练主配置。
+# 数值型训练参数应通过本文件统一配置，脚本只允许用命令行覆盖少数入口参数。
+# 随机与设备
+seed: 1
+# auto 会在可用且兼容时使用 GPU，否则回退到 CPU。
+device: auto
+torch_threads:
+  # 采样时 baseline 合批推理及策略 CPU 运算使用的算子内线程数。
+  sampling: 1
+  # PPO 更新阶段的 CPU 算子线程数；不表示并行仿真数量。
+  training: 16
+# 双 Socket 平台连接地址。
+host: 127.0.0.1
+# 红方和蓝方 Socket 的起始端口；每个并行环境占用两个端口。
+red_port: 8888
+blue_port: 8889
+# 通讯模式；dual 表示红蓝双方分别使用独立 Socket。
+communication_mode: dual
+# 训练和控制的己方阵营。
+control_side: red
+# 固定飞控模型：baseline 为 LAGCFC 神经飞控，pid 为 C50-M1 PID。
+flight_controller: pid
+# 最大训练轮数；一轮包含完整采样阶段和 PPO 更新阶段。
+max_updates: 1000
+# 每轮采样必须完成的完整对战总局数；全部完成后才进入训练阶段。
+# 必须为偶数：训练方每轮一半对局在地图左侧出生、一半在右侧，顺序随机打乱。
+n_rollout_threads: 32
+# 同时运行的平台环境数；每批全部结束后复用这些环境开始下一批。
+# 例如总计 32 局、并行 8 局，需要依次完成 4 批；最后一批只运行剩余局数。
+parallel_envs: 8
+# 相邻并行环境的红方端口偏移；双 Socket 下通常为 2。
+port_stride: 2
+# 单场采样允许的最大环境步数；达到后终止并放弃本轮不完整数据。
+collection_max_episode_steps: 20000
+# 采样 buffer 的内存上限，单位 MiB；超过后停止采样并报错。
+sampling_memory_limit_mb: 4096
+# 平台进程启动配置
+platform_launch:
+  # 是否由训练器自动启动平台实例；外部已启动平台时可关闭。
+  enabled: true
+  # 平台可执行文件路径，相对于项目根目录。
+  executable: platform/Windows/ZK.exe
+  # 平台比赛模式编号。
+  play_mode: 0
+  # 平台场景编号。
+  scene: 3
+  # 建立 Socket 连接的超时时间，单位秒。
+  connect_timeout_seconds: 120
+  # 单次 Socket 收发等待超时时间，单位秒。
+  socket_timeout_seconds: 60
+# GAE 与 PPO 数据处理
+ # 折扣因子，控制未来奖励的影响范围。
+gamma: 0.99
+ # GAE 的 lambda 参数，控制偏差和方差的折中。
+gae_lambda: 0.95
+ # 每轮采样数据重复训练的 epoch 数。
+ppo_epochs: 4
+ # 每个 epoch 将打乱后的 chunk 分成的初始组数。
+mini_batches: 5
+ # 循环策略 chunk 的时间长度；每个 chunk 连续保存 8 个环境步。
+sequence_length: 8
+ # 单次优化器更新最多处理的样本位置数；实际 batch 还受 chunk 长度约束。
+max_minibatch_samples: 4096
+# PPO 优化超参数
+ # PPO 概率比裁剪范围。
+clip_param: 0.2
+ # Adam 优化器学习率。
+learning_rate: 0.0003
+ # critic 损失在总损失中的权重。
+value_loss_coef: 1.0
+ # 是否使用裁剪后的 value loss。
+use_clipped_value_loss: false
+ # 熵正则项系数，鼓励动作探索。
+entropy_coef: 0.005
+ # actor 和 critic 梯度范数裁剪上限。
+max_grad_norm: 2.0
+# 循环 actor/critic 网络隐藏层宽度
+ # actor 的 GRU/隐藏表示维度。
+actor_hidden: 128
+ # LAGCFC critic 的 GRU/隐藏表示维度。
+critic_hidden: 512
+# 每轮固定保存 actor_<轮数>.pt、actor_latest.pt 和 critic_latest.pt。
+# 日志与评估
+ # 每隔多少轮输出一条训练日志；1 表示每轮输出。
+log_interval: 1
+reward_recorder:
+  # 每轮写 log/rewards.csv，汇总所有采样局的各类奖励及均值/标准差/极值。
+  enabled: true
+ # 评估模式使用的基础随机种子。
+evaluation_seed: 1000

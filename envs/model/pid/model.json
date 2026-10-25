@@ -1,0 +1,1562 @@
+{
+  "schema": "competition-f16-eas-nine-state-model-v1",
+  "state_names": [
+    "eas_mps",
+    "alpha_rad",
+    "pitch_rad",
+    "q_radps",
+    "beta_rad",
+    "roll_rad",
+    "p_radps",
+    "r_radps",
+    "altitude_m"
+  ],
+  "command_names": [
+    "aileron",
+    "elevator",
+    "rudder",
+    "throttle"
+  ],
+  "state_units": [
+    "m/s",
+    "rad",
+    "rad",
+    "rad/s",
+    "rad",
+    "rad",
+    "rad/s",
+    "rad/s",
+    "m"
+  ],
+  "control_dt_sec": 0.2,
+  "A_continuous": [
+    [
+      -0.01748023957801919,
+      1.2886786078907058,
+      -7.156316576383755,
+      0.5475071966039925,
+      1.020932793037602e-07,
+      -0.00013184741616380246,
+      -1.1873111466136128,
+      2.9425897621007942e-12,
+      -4.109228555499342e-05
+    ],
+    [
+      -0.0011743122508893265,
+      -0.35738497633389815,
+      -6.789738287579922e-06,
+      0.9669076230851178,
+      -4.6842249812373904e-07,
+      -1.2170748310008178e-10,
+      -6.103855679364198e-05,
+      -4.93183554904462e-13,
+      2.9345764308678573e-08
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      -3.0740200175570126e-11,
+      0.0
+    ],
+    [
+      0.00022030301023184888,
+      -2.8504572675413455,
+      0.0015256267845474205,
+      -3.8702348807183067,
+      -4.1760099262487244e-07,
+      2.792913763048732e-08,
+      0.029220286121026055,
+      -1.0521444031518816e-10,
+      5.215702922199744e-07
+    ],
+    [
+      9.026368736595668e-12,
+      -3.858271278826167e-12,
+      4.5034503282126633e-13,
+      1.3728104011449298e-12,
+      -0.11962460852590351,
+      0.06021397006376268,
+      0.14012730037717577,
+      -0.987462266650212,
+      3.121963065040155e-12
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      4.332013208516644e-12,
+      0.0,
+      0.0,
+      1.0,
+      0.1409235288972902,
+      0.0
+    ],
+    [
+      8.580006078354101e-10,
+      -3.683010294297319e-10,
+      1.393111115519815e-11,
+      1.0197796402625751e-10,
+      -13.605025356016082,
+      9.784368884212896e-10,
+      -2.1227938972825706,
+      6.622801185232916,
+      3.7320291481479873e-10
+    ],
+    [
+      -1.544384500339007e-10,
+      1.1923839229790975e-11,
+      -3.357335544541574e-11,
+      -2.910567460995889e-11,
+      3.410964646617968,
+      2.564815702050481e-09,
+      -0.0777842807010778,
+      -4.290040436607361,
+      -1.2684646785983674e-10
+    ],
+    [
+      1.6788065151443162e-10,
+      -160.01999999905314,
+      160.02000000001328,
+      2.5266899683629163e-10,
+      6.605489488720195e-10,
+      0.002948196713134621,
+      4.0066083784040524e-10,
+      2.346212113479851e-10,
+      7.352383126727436e-10
+    ]
+  ],
+  "B_continuous": [
+    [
+      5.078884725933749,
+      0.4344485799691619,
+      7.086442278902852e-08,
+      4.126355784589149
+    ],
+    [
+      0.2166677072177789,
+      0.007471708218814921,
+      1.218781621536009e-09,
+      -0.005723947714584235
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      -0.12352876333265564,
+      -1.776601175327748,
+      -2.897874343583868e-07,
+      -0.05237272781345996
+    ],
+    [
+      -0.0032811229168344595,
+      -2.0273285949692867e-09,
+      0.004928473226563622,
+      1.7245967988216141e-10
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      5.516214723165388,
+      -6.411322706339101e-09,
+      0.6357018811109733,
+      -1.1421779504375856e-10
+    ],
+    [
+      0.30120716648231144,
+      4.230597197821063e-09,
+      -0.4194747332889695,
+      7.5367842264837e-11
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "trim": {
+    "state": {
+      "time_sec": 0.0,
+      "altitude_m": 8534.400000001137,
+      "eas_mps": 101.59096437020094,
+      "roll_rad": 3.074015579501261e-11,
+      "pitch_rad": 0.14000160208256948,
+      "heading_rad": 1.570796326794897,
+      "alpha_rad": 0.14000160208256987,
+      "beta_rad": -7.280423400511746e-16,
+      "p_radps": 0.0,
+      "q_radps": 0.0,
+      "r_radps": 0.0,
+      "v_north_mps": 6.864841966639933e-10,
+      "v_east_mps": 160.01999999999992,
+      "v_down_mps": 6.930349627509714e-14,
+      "speed_kind": "EAS"
+    },
+    "commands": [
+      3.9987173294786515e-11,
+      -0.18599601816358236,
+      -3.5024814298845186e-10,
+      0.29809034361999326
+    ]
+  },
+  "x0": [
+    101.59096437020646,
+    0.14000160208256987,
+    0.14000160208256948,
+    0.0,
+    -7.280423400511746e-16,
+    3.074015579501261e-11,
+    0.0,
+    0.0,
+    8534.400000001137
+  ],
+  "u0": [
+    3.9987173294786515e-11,
+    -0.18599601816358236,
+    -3.5024814298845186e-10,
+    0.29809034361999326
+  ],
+  "atmosphere": {
+    "rho": 0.0009580202562082566,
+    "rho0": 0.002376911752773999,
+    "rho_gradient_per_m": -1.1355921411960838e-07,
+    "density_unit": "slug/ft^3",
+    "slope_height_unit": "m",
+    "native_density_path": "atmosphere/rho-slugs_ft3",
+    "probes": [
+      {
+        "name": "minus",
+        "altitude_m": 8533.400000001137,
+        "rho": 0.0009581338205891763,
+        "native_eas_fps": 333.32344331715285,
+        "native_tas_fps": 524.9999999992808
+      },
+      {
+        "name": "plus",
+        "altitude_m": 8535.400000001137,
+        "rho": 0.000957906702160937,
+        "native_eas_fps": 333.28393506595336,
+        "native_tas_fps": 524.999999999281
+      },
+      {
+        "name": "sea_level",
+        "altitude_m": 0.0,
+        "rho": 0.002376911752773999,
+        "native_eas_fps": 524.9999999992524,
+        "native_tas_fps": 524.9999999992809
+      },
+      {
+        "name": "center",
+        "altitude_m": 8534.400000001137,
+        "rho": 0.0009580202562081268,
+        "native_eas_fps": 333.3036888781332,
+        "native_tas_fps": 524.9999999992809
+      }
+    ],
+    "gradient_method": "central difference at +/-1m using native nonintegrating RunIC",
+    "density_probe_explicit_integration_steps": 0,
+    "density_ratio_sqrt": 0.6348641692926293,
+    "eas_altitude_gradient_per_m": -0.006021057488489018
+  },
+  "coordinate_transform": {
+    "J": [
+      [
+        0.6348641692926293,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -0.006021057488489018
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "J_inverse": [
+      [
+        1.5751400825064799,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009484008989194851
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "A_TAS_SI": [
+      [
+        -0.017480239577008373,
+        0.512218210315322,
+        -9.754569964116511,
+        0.8624005308341005,
+        1.6081748103805084e-07,
+        -0.00017971742584523456,
+        -1.8701813774340295,
+        6.860140758138244e-12,
+        0.00010105665019516159
+      ],
+      [
+        -0.0007455287716510101,
+        -0.35738497633389815,
+        -6.789738287579922e-06,
+        0.9669076230851178,
+        -4.6842249812373904e-07,
+        -1.2170748310008178e-10,
+        -6.103855679364198e-05,
+        -4.93183554904462e-13,
+        7.099947336350254e-06
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        -3.0740200175570126e-11,
+        0.0
+      ],
+      [
+        0.00013986248758350836,
+        -2.8504572675413455,
+        0.0015256267845474205,
+        -3.8702348807183067,
+        -4.1760099262487244e-07,
+        2.792913763048732e-08,
+        0.029220286121026055,
+        -1.0521444031518816e-10,
+        -8.048867972731722e-07
+      ],
+      [
+        5.730518089687769e-12,
+        -3.858271278826167e-12,
+        4.5034503282126633e-13,
+        1.3728104011449298e-12,
+        -0.11962460852590351,
+        0.06021397006376268,
+        0.14012730037717577,
+        -0.987462266650212,
+        3.0676147799648124e-12
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        4.332013208516644e-12,
+        0.0,
+        0.0,
+        1.0,
+        0.1409235288972902,
+        0.0
+      ],
+      [
+        5.447138431459987e-10,
+        -3.683010294297319e-10,
+        1.393111115519815e-11,
+        1.0197796402625751e-10,
+        -13.605025356016082,
+        9.784368884212896e-10,
+        -2.1227938972825706,
+        6.622801185232916,
+        3.680368438298632e-10
+      ],
+      [
+        -9.80474382876136e-11,
+        1.1923839229790975e-11,
+        -3.357335544541574e-11,
+        -2.910567460995889e-11,
+        3.410964646617968,
+        2.564815702050481e-09,
+        -0.0777842807010778,
+        -4.290040436607361,
+        -1.259165850737495e-10
+      ],
+      [
+        1.0658141036401503e-10,
+        -160.01999999905314,
+        160.02000000001328,
+        2.5266899683629163e-10,
+        6.605489488720195e-10,
+        0.002948196713134621,
+        4.0066083784040524e-10,
+        2.346212113479851e-10,
+        7.342274936187702e-10
+      ]
+    ],
+    "B_TAS_SI": [
+      [
+        7.999954906248186,
+        0.6843173720974487,
+        1.1162139275868444e-07,
+        6.499588390988843
+      ],
+      [
+        0.2166677072177789,
+        0.007471708218814921,
+        1.218781621536009e-09,
+        -0.005723947714584235
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.12352876333265564,
+        -1.776601175327748,
+        -2.897874343583868e-07,
+        -0.05237272781345996
+      ],
+      [
+        -0.0032811229168344595,
+        -2.0273285949692867e-09,
+        0.004928473226563622,
+        1.7245967988216141e-10
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        5.516214723165388,
+        -6.411322706339101e-09,
+        0.6357018811109733,
+        -1.1421779504375856e-10
+      ],
+      [
+        0.30120716648231144,
+        4.230597197821063e-09,
+        -0.4194747332889695,
+        7.5367842264837e-11
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "formula": "z_E=J z_T; A_E=J A_T J^-1; B_E=J B_T; stationary measured native atmosphere"
+  },
+  "full_linearization": {
+    "state_names": [
+      "Vt",
+      "Alpha",
+      "Theta",
+      "Q",
+      "Beta",
+      "Phi",
+      "P",
+      "Psi",
+      "R",
+      "Latitude",
+      "Longitude",
+      "Alt"
+    ],
+    "input_names": [
+      "ThtlCmd",
+      "DaCmd",
+      "DeCmd",
+      "DrCmd"
+    ],
+    "state_units": [
+      "ft/s",
+      "rad",
+      "rad",
+      "rad/s",
+      "rad",
+      "rad",
+      "rad/s",
+      "rad",
+      "rad/s",
+      "rad",
+      "rad",
+      "ft"
+    ],
+    "input_units": [
+      "norm",
+      "norm",
+      "norm",
+      "norm"
+    ],
+    "A_continuous": [
+      [
+        -0.017480239577008373,
+        1.6805059393547308,
+        -32.00318229697018,
+        2.829398067041012,
+        5.276164076051536e-07,
+        -0.0005896241005421081,
+        -6.1357656739961595,
+        1.6316623382346444e-06,
+        2.2507023484705523e-11,
+        5.014578337485701e-12,
+        2.132181562610969e-09,
+        0.00010105665019516159
+      ],
+      [
+        -0.0002272371695992279,
+        -0.35738497633389815,
+        -6.789738287579922e-06,
+        0.9669076230851178,
+        -4.6842249812373904e-07,
+        -1.2170748310008178e-10,
+        -6.103855679364198e-05,
+        2.693380586561451e-07,
+        -4.93183554904462e-13,
+        -6.145187636382996e-13,
+        4.6671031746722324e-11,
+        2.1640639481195577e-06
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -3.0740200175570126e-11,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        4.263008621545335e-05,
+        -2.8504572675413455,
+        0.0015256267845474205,
+        -3.8702348807183067,
+        -4.1760099262487244e-07,
+        2.792913763048732e-08,
+        0.029220286121026055,
+        -1.2910626387817833e-06,
+        -1.0521444031518816e-10,
+        1.287010226838657e-11,
+        2.4336793586484918e-12,
+        -2.453294958088629e-07
+      ],
+      [
+        1.7466619137368322e-12,
+        -3.858271278826167e-12,
+        4.5034503282126633e-13,
+        1.3728104011449298e-12,
+        -0.11962460852590351,
+        0.06021397006376268,
+        0.14012730037717577,
+        -2.5788931439529345e-08,
+        -0.987462266650212,
+        0.0001466212990155485,
+        1.1716636337879448e-12,
+        9.350089849332748e-13
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        4.332013208516644e-12,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.1409235288972902,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        1.660287793909004e-10,
+        -3.683010294297319e-10,
+        1.393111115519815e-11,
+        1.0197796402625751e-10,
+        -13.605025356016082,
+        9.784368884212896e-10,
+        -2.1227938972825706,
+        5.127397221893112e-08,
+        6.622801185232916,
+        3.0304060226463184e-07,
+        1.4045323662883865e-10,
+        1.121776299993423e-10
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        3.1043896334524335e-11,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.009880904362918,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -2.988485919006463e-11,
+        1.1923839229790975e-11,
+        -3.357335544541574e-11,
+        -2.910567460995889e-11,
+        3.410964646617968,
+        2.564815702050481e-09,
+        -0.0777842807010778,
+        -3.722843661655989e-08,
+        -4.290040436607361,
+        -2.026031990712106e-07,
+        -2.820567495920319e-11,
+        -3.8379375130478845e-11
+      ],
+      [
+        1.7291651400810298e-16,
+        -3.520295608215893e-17,
+        9.406370499699167e-17,
+        1.3049475198926074e-16,
+        -2.5055305020610728e-05,
+        3.496335049113201e-06,
+        1.3791451465529427e-16,
+        -2.505530502170083e-05,
+        1.7906732455413918e-16,
+        7.460714937499014e-17,
+        1.1160946830427702e-16,
+        1.0481037573550804e-16
+      ],
+      [
+        4.772439129495824e-08,
+        -1.4117215787571671e-16,
+        1.2705494208814505e-16,
+        1.5246593050577404e-16,
+        5.025728820375515e-16,
+        1.8352380523843173e-16,
+        2.258754526011467e-16,
+        -1.0164395367051603e-16,
+        2.9928497469651944e-16,
+        -2.5410988417629007e-17,
+        1.807003620809174e-16,
+        -1.1957564116388956e-12
+      ],
+      [
+        1.0658141036401501e-10,
+        -524.9999999968935,
+        525.0000000000435,
+        8.289665250534501e-10,
+        2.1671553440683056e-09,
+        0.009672561394798624,
+        1.3145040611561851e-09,
+        1.2671345454388452e-09,
+        7.697546304067752e-10,
+        3.671137468093851e-10,
+        4.500103993147301e-10,
+        7.342274936187702e-10
+      ]
+    ],
+    "B_continuous": [
+      [
+        21.32410889432035,
+        26.246571214725016,
+        2.24513573522785,
+        3.6621191849962087e-07
+      ],
+      [
+        -0.005723947714584235,
+        0.2166677072177789,
+        0.007471708218814921,
+        1.218781621536009e-09
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.05237272781345996,
+        -0.12352876333265564,
+        -1.776601175327748,
+        -2.897874343583868e-07
+      ],
+      [
+        1.7245967988216141e-10,
+        -0.0032811229168344595,
+        -2.0273285949692867e-09,
+        0.004928473226563622
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -1.1421779504375856e-10,
+        5.516214723165388,
+        -6.411322706339101e-09,
+        0.6357018811109733
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        7.5367842264837e-11,
+        0.30120716648231144,
+        4.230597197821063e-09,
+        -0.4194747332889695
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "x0": [
+      524.9999999999995,
+      0.14000160208256987,
+      0.14000160208256948,
+      0.0,
+      -7.280423400511746e-16,
+      3.074015579501261e-11,
+      0.0,
+      1.570796326794897,
+      0.0,
+      0.0,
+      -0.004363323129985825,
+      28000.000000003725
+    ],
+    "u0": [
+      0.29809034361999326,
+      3.9987173294786515e-11,
+      -0.18599601816358236,
+      -3.5024814298845186e-10
+    ]
+  },
+  "extraction": {
+    "native_state_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      11
+    ],
+    "native_input_indices": [
+      1,
+      2,
+      3,
+      0
+    ],
+    "omitted_drive_abs_max": 0.0001466212990155485,
+    "omitted_state_names": [
+      "Psi",
+      "Latitude",
+      "Longitude"
+    ],
+    "omitted_coupling_native": [
+      [
+        1.6316623382346444e-06,
+        5.014578337485701e-12,
+        2.132181562610969e-09
+      ],
+      [
+        2.693380586561451e-07,
+        -6.145187636382996e-13,
+        4.6671031746722324e-11
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -1.2910626387817833e-06,
+        1.287010226838657e-11,
+        2.4336793586484918e-12
+      ],
+      [
+        -2.5788931439529345e-08,
+        0.0001466212990155485,
+        1.1716636337879448e-12
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        5.127397221893112e-08,
+        3.0304060226463184e-07,
+        1.4045323662883865e-10
+      ],
+      [
+        -3.722843661655989e-08,
+        -2.026031990712106e-07,
+        -2.820567495920319e-11
+      ],
+      [
+        1.2671345454388452e-09,
+        3.671137468093851e-10,
+        4.500103993147301e-10
+      ]
+    ],
+    "conditional_fixed_parameters": [
+      "Psi",
+      "Latitude",
+      "Longitude"
+    ],
+    "omitted_coupling_assumed_zero": false,
+    "fdm_disposition": "retired after identification; never compare controllers on this FDM"
+  },
+  "limitations": [
+    "Local fixed-atmosphere model, not globally valid or wind/adaptive-density model.",
+    "Reduced9 model is conditional on fixed heading/latitude/longitude; omitted couplings are recorded, not zeroed physical facts.",
+    "Nine physical states omit actuator/FCS integral and engine spool internal states.",
+    "EAS/height coupling retained; inner8 regulator is conditional on measured height.",
+    "No nonlinear or competition capability conclusion follows from local eigenvalues."
+  ],
+  "provenance": {
+    "native_api": "jsbsim.FGLinearization",
+    "backend_initialization": {
+      "stage": "ready",
+      "model_root": "C:\\Users\\15635\\Desktop\\2026-智能空中博弈算法挑战赛\\ZK-platform\\ZK_20260917\\Windows\\ZK_Data\\StreamingAssets\\jsbsim",
+      "native_dt_sec": 0.016666666666666666,
+      "trim_before_handover": true,
+      "online_trim": false,
+      "mass_override": false,
+      "inertia_override": false,
+      "trim_internal_evaluations": null,
+      "native_run_ic_calls": 5,
+      "native_trim_calls": 1,
+      "native_linearization_calls": 1,
+      "initial_raw": {
+        "simulation/sim-time-sec": 0.0,
+        "position/h-sl-ft": 28000.000000003725,
+        "position/lat-geod-deg": 0.0,
+        "position/long-gc-deg": -0.25000000000000006,
+        "velocities/vt-fps": 525.0000000000001,
+        "attitude/phi-rad": -1.387778780781445e-17,
+        "attitude/theta-rad": -4.423544863740858e-17,
+        "attitude/psi-rad": 1.5707963267948963,
+        "attitude/psi-deg": 89.99999999999999,
+        "aero/alpha-rad": 2.5376526277146468e-17,
+        "aero/beta-rad": 0.0,
+        "aero/alpha-deg": 1.4539678543833238e-15,
+        "aero/beta-deg": 0.0,
+        "velocities/p-rad_sec": 0.0,
+        "velocities/q-rad_sec": 0.0,
+        "velocities/r-rad_sec": 0.0,
+        "velocities/v-north-fps": 0.0,
+        "velocities/v-east-fps": 525.0000000000008,
+        "velocities/v-down-fps": 4.383212542924402e-14,
+        "atmosphere/total-wind-north-fps": 0.0,
+        "atmosphere/total-wind-east-fps": 6.821210263296962e-13,
+        "atmosphere/total-wind-down-fps": 0.0,
+        "accelerations/Nz": 0.1602019040305683,
+        "accelerations/n-pilot-x-norm": 0.4716146821061308,
+        "accelerations/n-pilot-y-norm": 0.0,
+        "accelerations/n-pilot-z-norm": -0.13677429668251342,
+        "aero/qbar-psf": 132.02716655870043,
+        "fcs/fbw-override": 0.0,
+        "gear/gear-cmd-norm": 0.0,
+        "gear/gear-pos-norm": 0.0,
+        "fcs/pitch-trim-cmd-norm": 0.0,
+        "fcs/roll-trim-cmd-norm": 0.0,
+        "fcs/yaw-trim-cmd-norm": 0.0,
+        "fcs/aileron-cmd-norm": 0.0,
+        "fcs/elevator-cmd-norm": 0.0,
+        "fcs/rudder-cmd-norm": 0.0,
+        "fcs/throttle-cmd-norm": 0.8,
+        "fcs/left-aileron-pos-rad": 0.0,
+        "fcs/right-aileron-pos-rad": 0.0,
+        "fcs/elevator-pos-rad": 0.002621449998858236,
+        "fcs/rudder-pos-rad": 0.0,
+        "fcs/left-aileron-pos-norm": 0.0,
+        "fcs/right-aileron-pos-norm": 0.0,
+        "fcs/elevator-pos-norm": 0.006012499997381275,
+        "fcs/rudder-pos-norm": 0.0,
+        "fcs/throttle-pos-norm": 1.6,
+        "velocities/ve-fps": 333.3036888786123,
+        "atmosphere/rho-slugs_ft3": 0.0009580202562082566,
+        "inertia/mass-slugs": 764.6535255789535,
+        "inertia/ixx-slugs_ft2": 15963.767196323115,
+        "inertia/iyy-slugs_ft2": 57380.332084958936,
+        "inertia/izz-slugs_ft2": 70914.42894831116,
+        "inertia/ixy-slugs_ft2": -0.0,
+        "inertia/ixz-slugs_ft2": -1167.6806108567112,
+        "inertia/iyz-slugs_ft2": -0.0,
+        "propulsion/tank/contents-lbs": 3486.0
+      },
+      "initial_state": {
+        "time_sec": 0.0,
+        "altitude_m": 8534.400000001137,
+        "eas_mps": 101.59096437020104,
+        "roll_rad": -1.387778780781445e-17,
+        "pitch_rad": -4.423544863740858e-17,
+        "heading_rad": 1.5707963267948963,
+        "alpha_rad": 2.5376526277146468e-17,
+        "beta_rad": 0.0,
+        "p_radps": 0.0,
+        "q_radps": 0.0,
+        "r_radps": 0.0,
+        "v_north_mps": 0.0,
+        "v_east_mps": 160.02000000000024,
+        "v_down_mps": 1.3360031830833577e-14,
+        "speed_kind": "EAS"
+      },
+      "initial_mass_checks": {
+        "passed": true,
+        "fields": {
+          "inertia/mass-slugs": {
+            "actual": 764.6535255789535,
+            "expected": 764.6535,
+            "tolerance": 0.0007646535,
+            "passed": true
+          },
+          "inertia/ixx-slugs_ft2": {
+            "actual": 15963.767196323115,
+            "expected": 15963.7676,
+            "tolerance": 0.015963767599999998,
+            "passed": true
+          },
+          "inertia/iyy-slugs_ft2": {
+            "actual": 57380.332084958936,
+            "expected": 57380.332,
+            "tolerance": 0.057380332,
+            "passed": true
+          },
+          "inertia/izz-slugs_ft2": {
+            "actual": 70914.42894831116,
+            "expected": 70914.43,
+            "tolerance": 0.07091442999999999,
+            "passed": true
+          },
+          "inertia/ixy-slugs_ft2": {
+            "actual": -0.0,
+            "expected": 0.0,
+            "tolerance": 1e-06,
+            "passed": true
+          },
+          "inertia/ixz-slugs_ft2": {
+            "actual": -1167.6806108567112,
+            "expected": -1167.68066,
+            "tolerance": 0.00116768066,
+            "passed": true
+          },
+          "inertia/iyz-slugs_ft2": {
+            "actual": -0.0,
+            "expected": 0.0,
+            "tolerance": 1e-06,
+            "passed": true
+          },
+          "propulsion/tank/contents-lbs": {
+            "actual": 3486.0,
+            "expected": 3486.0,
+            "tolerance": 0.01,
+            "passed": true
+          }
+        },
+        "scope": "native default before trim versus C49-E6 first frame; no property override"
+      },
+      "handover_raw": {
+        "simulation/sim-time-sec": 0.0,
+        "position/h-sl-ft": 28000.000000003725,
+        "position/lat-geod-deg": 0.0,
+        "position/long-gc-deg": -0.25000000000000006,
+        "velocities/vt-fps": 524.9999999999995,
+        "attitude/phi-rad": 3.074015579501261e-11,
+        "attitude/theta-rad": 0.14000160208256948,
+        "attitude/psi-rad": 1.570796326794897,
+        "attitude/psi-deg": 90.00000000000003,
+        "aero/alpha-rad": 0.14000160208256987,
+        "aero/beta-rad": -7.280423400511746e-16,
+        "aero/alpha-deg": 8.02150092440121,
+        "aero/beta-deg": -4.17137533917606e-14,
+        "velocities/p-rad_sec": 0.0,
+        "velocities/q-rad_sec": 0.0,
+        "velocities/r-rad_sec": 0.0,
+        "velocities/v-north-fps": 2.252244739711264e-09,
+        "velocities/v-east-fps": 524.9999999999998,
+        "velocities/v-down-fps": 2.2737367544323206e-13,
+        "atmosphere/total-wind-north-fps": -4.710171243894156e-14,
+        "atmosphere/total-wind-east-fps": 2.2737367544323206e-13,
+        "atmosphere/total-wind-down-fps": 2.525757381022231e-15,
+        "accelerations/Nz": 0.9825399321500582,
+        "accelerations/n-pilot-x-norm": 0.13846283048032706,
+        "accelerations/n-pilot-y-norm": -2.8672549437373046e-08,
+        "accelerations/n-pilot-z-norm": -0.9825400852264811,
+        "aero/qbar-psf": 132.02716655870015,
+        "fcs/fbw-override": 0.0,
+        "gear/gear-cmd-norm": 0.0,
+        "gear/gear-pos-norm": 0.0,
+        "fcs/pitch-trim-cmd-norm": -0.18599601816358236,
+        "fcs/roll-trim-cmd-norm": 0.0,
+        "fcs/yaw-trim-cmd-norm": 0.0,
+        "fcs/aileron-cmd-norm": 3.9987173294786515e-11,
+        "fcs/elevator-cmd-norm": 0.0,
+        "fcs/rudder-cmd-norm": -3.5024814298845186e-10,
+        "fcs/throttle-cmd-norm": 0.29809034361999326,
+        "fcs/left-aileron-pos-rad": 3.3305097200333495e-11,
+        "fcs/right-aileron-pos-rad": -3.3305097200333495e-11,
+        "fcs/elevator-pos-rad": -0.010062945919825953,
+        "fcs/rudder-pos-rad": 1.0766859399296256e-08,
+        "fcs/left-aileron-pos-norm": 1.5994869317914606e-10,
+        "fcs/right-aileron-pos-norm": 0.0,
+        "fcs/elevator-pos-norm": -0.023080151192261363,
+        "fcs/rudder-pos-norm": 2.054744160171041e-08,
+        "fcs/throttle-pos-norm": 0.5961806872399865,
+        "velocities/ve-fps": 333.303688878612,
+        "atmosphere/rho-slugs_ft3": 0.0009580202562082566,
+        "inertia/mass-slugs": 764.6535255789535,
+        "inertia/ixx-slugs_ft2": 15963.767196323115,
+        "inertia/iyy-slugs_ft2": 57380.332084958936,
+        "inertia/izz-slugs_ft2": 70914.42894831116,
+        "inertia/ixy-slugs_ft2": -0.0,
+        "inertia/ixz-slugs_ft2": -1167.6806108567112,
+        "inertia/iyz-slugs_ft2": -0.0,
+        "propulsion/tank/contents-lbs": 3486.0
+      },
+      "handover_state": {
+        "time_sec": 0.0,
+        "altitude_m": 8534.400000001137,
+        "eas_mps": 101.59096437020094,
+        "roll_rad": 3.074015579501261e-11,
+        "pitch_rad": 0.14000160208256948,
+        "heading_rad": 1.570796326794897,
+        "alpha_rad": 0.14000160208256987,
+        "beta_rad": -7.280423400511746e-16,
+        "p_radps": 0.0,
+        "q_radps": 0.0,
+        "r_radps": 0.0,
+        "v_north_mps": 6.864841966639933e-10,
+        "v_east_mps": 160.01999999999992,
+        "v_down_mps": 6.930349627509714e-14,
+        "speed_kind": "EAS"
+      },
+      "handover_kind": "offline_trim",
+      "trim": {
+        "state": {
+          "time_sec": 0.0,
+          "altitude_m": 8534.400000001137,
+          "eas_mps": 101.59096437020094,
+          "roll_rad": 3.074015579501261e-11,
+          "pitch_rad": 0.14000160208256948,
+          "heading_rad": 1.570796326794897,
+          "alpha_rad": 0.14000160208256987,
+          "beta_rad": -7.280423400511746e-16,
+          "p_radps": 0.0,
+          "q_radps": 0.0,
+          "r_radps": 0.0,
+          "v_north_mps": 6.864841966639933e-10,
+          "v_east_mps": 160.01999999999992,
+          "v_down_mps": 6.930349627509714e-14,
+          "speed_kind": "EAS"
+        },
+        "commands": [
+          3.9987173294786515e-11,
+          0.0,
+          -3.5024814298845186e-10,
+          0.29809034361999326
+        ]
+      },
+      "command_basis": {
+        "schema": "competition-native-aert-zero-hidden-trim-v1",
+        "mapped": true,
+        "before_commands": [
+          3.9987173294786515e-11,
+          0.0,
+          -3.5024814298845186e-10,
+          0.29809034361999326
+        ],
+        "before_hidden_trim": {
+          "fcs/roll-trim-cmd-norm": 0.0,
+          "fcs/pitch-trim-cmd-norm": -0.18599601816358236,
+          "fcs/yaw-trim-cmd-norm": 0.0
+        },
+        "optional_physical_paths": [
+          "fcs/elevator-cmd-limiter",
+          "forces/fbx-total-lbs",
+          "forces/fby-total-lbs",
+          "forces/fbz-total-lbs",
+          "moments/l-total-lbsft",
+          "moments/m-total-lbsft",
+          "moments/n-total-lbsft",
+          "propulsion/engine/n1",
+          "propulsion/engine/n2",
+          "propulsion/engine/thrust-lbs"
+        ],
+        "sendable_commands": true,
+        "hidden_trim_zero": true,
+        "online_trim": false,
+        "XML_modified": false,
+        "optional_engine_diagnostics": {
+          "n1": [
+            "propulsion/engine/n1"
+          ],
+          "n2": [
+            "propulsion/engine/n2"
+          ],
+          "thrust-lbs": [
+            "propulsion/engine/thrust-lbs"
+          ]
+        },
+        "engine_running_status_directly_observed": false,
+        "initialization_scope": "mass/inertia/fuel match only; engine spool/thrust/startup equivalence with platform not established",
+        "xml_mechanism": {
+          "xml_path": "C:\\Users\\15635\\Desktop\\2026-智能空中博弈算法挑战赛\\ZK-platform\\ZK_20260917\\Windows\\ZK_Data\\StreamingAssets\\jsbsim\\aircraft\\f16\\f16.xml",
+          "xml_sha256": "c56680fa684c8333e4c321b7eb1b79cb77576da642f7609892b26b08b4adc832",
+          "summer": "fcs/elevator-cmd-limiter",
+          "sum_inputs": [
+            "fcs/elevator-cmd-norm",
+            "fcs/pitch-trim-cmd-norm"
+          ],
+          "clip_min": -1.0,
+          "clip_max": 0.44,
+          "pitch_trim_input_consumers": 1,
+          "mapping": "elevator_new=elevator_old+pitch_trim_old; pitch_trim_new=0",
+          "unrelated_roll_yaw_mapping_authorized": false
+        },
+        "after_commands": [
+          3.9987173294786515e-11,
+          -0.18599601816358236,
+          -3.5024814298845186e-10,
+          0.29809034361999326
+        ],
+        "after_hidden_trim": {
+          "fcs/roll-trim-cmd-norm": 0.0,
+          "fcs/pitch-trim-cmd-norm": 0.0,
+          "fcs/yaw-trim-cmd-norm": 0.0
+        }
+      },
+      "model_center": {
+        "source": "fresh_mapped_trim_t0_no_explicit_integration",
+        "trim": {
+          "state": {
+            "time_sec": 0.0,
+            "altitude_m": 8534.400000001137,
+            "eas_mps": 101.59096437020094,
+            "roll_rad": 3.074015579501261e-11,
+            "pitch_rad": 0.14000160208256948,
+            "heading_rad": 1.570796326794897,
+            "alpha_rad": 0.14000160208256987,
+            "beta_rad": -7.280423400511746e-16,
+            "p_radps": 0.0,
+            "q_radps": 0.0,
+            "r_radps": 0.0,
+            "v_north_mps": 6.864841966639933e-10,
+            "v_east_mps": 160.01999999999992,
+            "v_down_mps": 6.930349627509714e-14,
+            "speed_kind": "EAS"
+          },
+          "commands": [
+            3.9987173294786515e-11,
+            -0.18599601816358236,
+            -3.5024814298845186e-10,
+            0.29809034361999326
+          ]
+        },
+        "native_time_sec": 0.0,
+        "explicit_integration_steps_before_identification": 0
+      }
+    },
+    "offline_atmosphere_only": true,
+    "online_tas_required": false,
+    "density_probes_mutate_retired_fdm": true,
+    "command_basis": {
+      "schema": "competition-native-aert-zero-hidden-trim-v1",
+      "mapped": true,
+      "before_commands": [
+        3.9987173294786515e-11,
+        0.0,
+        -3.5024814298845186e-10,
+        0.29809034361999326
+      ],
+      "before_hidden_trim": {
+        "fcs/roll-trim-cmd-norm": 0.0,
+        "fcs/pitch-trim-cmd-norm": -0.18599601816358236,
+        "fcs/yaw-trim-cmd-norm": 0.0
+      },
+      "optional_physical_paths": [
+        "fcs/elevator-cmd-limiter",
+        "forces/fbx-total-lbs",
+        "forces/fby-total-lbs",
+        "forces/fbz-total-lbs",
+        "moments/l-total-lbsft",
+        "moments/m-total-lbsft",
+        "moments/n-total-lbsft",
+        "propulsion/engine/n1",
+        "propulsion/engine/n2",
+        "propulsion/engine/thrust-lbs"
+      ],
+      "sendable_commands": true,
+      "hidden_trim_zero": true,
+      "online_trim": false,
+      "XML_modified": false,
+      "optional_engine_diagnostics": {
+        "n1": [
+          "propulsion/engine/n1"
+        ],
+        "n2": [
+          "propulsion/engine/n2"
+        ],
+        "thrust-lbs": [
+          "propulsion/engine/thrust-lbs"
+        ]
+      },
+      "engine_running_status_directly_observed": false,
+      "initialization_scope": "mass/inertia/fuel match only; engine spool/thrust/startup equivalence with platform not established",
+      "xml_mechanism": {
+        "xml_path": "C:\\Users\\15635\\Desktop\\2026-智能空中博弈算法挑战赛\\ZK-platform\\ZK_20260917\\Windows\\ZK_Data\\StreamingAssets\\jsbsim\\aircraft\\f16\\f16.xml",
+        "xml_sha256": "c56680fa684c8333e4c321b7eb1b79cb77576da642f7609892b26b08b4adc832",
+        "summer": "fcs/elevator-cmd-limiter",
+        "sum_inputs": [
+          "fcs/elevator-cmd-norm",
+          "fcs/pitch-trim-cmd-norm"
+        ],
+        "clip_min": -1.0,
+        "clip_max": 0.44,
+        "pitch_trim_input_consumers": 1,
+        "mapping": "elevator_new=elevator_old+pitch_trim_old; pitch_trim_new=0",
+        "unrelated_roll_yaw_mapping_authorized": false
+      },
+      "after_commands": [
+        3.9987173294786515e-11,
+        -0.18599601816358236,
+        -3.5024814298845186e-10,
+        0.29809034361999326
+      ],
+      "after_hidden_trim": {
+        "fcs/roll-trim-cmd-norm": 0.0,
+        "fcs/pitch-trim-cmd-norm": 0.0,
+        "fcs/yaw-trim-cmd-norm": 0.0
+      },
+      "model_center_source": "fresh_mapped_trim_t0_no_explicit_integration",
+      "identification_center_hidden_trim": {
+        "fcs/roll-trim-cmd-norm": 0.0,
+        "fcs/pitch-trim-cmd-norm": 0.0,
+        "fcs/yaw-trim-cmd-norm": 0.0
+      },
+      "identification_center_commands": [
+        3.9987173294786515e-11,
+        -0.18599601816358236,
+        -3.5024814298845186e-10,
+        0.29809034361999326
+      ],
+      "model_center_native_time_sec": 0.0,
+      "explicit_integration_steps_before_identification": 0,
+      "paired_proof_identity": {
+        "experiment": "C50-E1",
+        "registration_sha256": "ddb7403e027862c0dd4af6e8ed85977c65a3eb0183a4fea356b1a012a4f66eb4",
+        "paired_ticks_sha256": "5e329c33a5fe9ed77f45583bb75dccf99c4599e75c1e93eee7b1a69a07a20aff",
+        "pairs": 120,
+        "physical_equivalence_pass": true,
+        "initial_comparison_sha256": "506bfcefd425a321f249b7fb41ad00785542dc0ced2e26fde438f927f2b8e48b"
+      },
+      "source_proof_experiment": "C50-E1",
+      "source_proof_completion_sha256": "7953c95b193b80f1f89b93920fe5e78f37a1504aa0a5b325b3d2f37126ea490a"
+    },
+    "model_center_selection": "fresh_mapped_trim_t0_no_explicit_integration"
+  },
+  "command_basis": {
+    "schema": "competition-native-aert-zero-hidden-trim-v1",
+    "mapped": true,
+    "before_commands": [
+      3.9987173294786515e-11,
+      0.0,
+      -3.5024814298845186e-10,
+      0.29809034361999326
+    ],
+    "before_hidden_trim": {
+      "fcs/roll-trim-cmd-norm": 0.0,
+      "fcs/pitch-trim-cmd-norm": -0.18599601816358236,
+      "fcs/yaw-trim-cmd-norm": 0.0
+    },
+    "optional_physical_paths": [
+      "fcs/elevator-cmd-limiter",
+      "forces/fbx-total-lbs",
+      "forces/fby-total-lbs",
+      "forces/fbz-total-lbs",
+      "moments/l-total-lbsft",
+      "moments/m-total-lbsft",
+      "moments/n-total-lbsft",
+      "propulsion/engine/n1",
+      "propulsion/engine/n2",
+      "propulsion/engine/thrust-lbs"
+    ],
+    "sendable_commands": true,
+    "hidden_trim_zero": true,
+    "online_trim": false,
+    "XML_modified": false,
+    "optional_engine_diagnostics": {
+      "n1": [
+        "propulsion/engine/n1"
+      ],
+      "n2": [
+        "propulsion/engine/n2"
+      ],
+      "thrust-lbs": [
+        "propulsion/engine/thrust-lbs"
+      ]
+    },
+    "engine_running_status_directly_observed": false,
+    "initialization_scope": "mass/inertia/fuel match only; engine spool/thrust/startup equivalence with platform not established",
+    "xml_mechanism": {
+      "xml_path": "C:\\Users\\15635\\Desktop\\2026-智能空中博弈算法挑战赛\\ZK-platform\\ZK_20260917\\Windows\\ZK_Data\\StreamingAssets\\jsbsim\\aircraft\\f16\\f16.xml",
+      "xml_sha256": "c56680fa684c8333e4c321b7eb1b79cb77576da642f7609892b26b08b4adc832",
+      "summer": "fcs/elevator-cmd-limiter",
+      "sum_inputs": [
+        "fcs/elevator-cmd-norm",
+        "fcs/pitch-trim-cmd-norm"
+      ],
+      "clip_min": -1.0,
+      "clip_max": 0.44,
+      "pitch_trim_input_consumers": 1,
+      "mapping": "elevator_new=elevator_old+pitch_trim_old; pitch_trim_new=0",
+      "unrelated_roll_yaw_mapping_authorized": false
+    },
+    "after_commands": [
+      3.9987173294786515e-11,
+      -0.18599601816358236,
+      -3.5024814298845186e-10,
+      0.29809034361999326
+    ],
+    "after_hidden_trim": {
+      "fcs/roll-trim-cmd-norm": 0.0,
+      "fcs/pitch-trim-cmd-norm": 0.0,
+      "fcs/yaw-trim-cmd-norm": 0.0
+    },
+    "model_center_source": "fresh_mapped_trim_t0_no_explicit_integration",
+    "identification_center_hidden_trim": {
+      "fcs/roll-trim-cmd-norm": 0.0,
+      "fcs/pitch-trim-cmd-norm": 0.0,
+      "fcs/yaw-trim-cmd-norm": 0.0
+    },
+    "identification_center_commands": [
+      3.9987173294786515e-11,
+      -0.18599601816358236,
+      -3.5024814298845186e-10,
+      0.29809034361999326
+    ],
+    "model_center_native_time_sec": 0.0,
+    "explicit_integration_steps_before_identification": 0,
+    "paired_proof_identity": {
+      "experiment": "C50-E1",
+      "registration_sha256": "ddb7403e027862c0dd4af6e8ed85977c65a3eb0183a4fea356b1a012a4f66eb4",
+      "paired_ticks_sha256": "5e329c33a5fe9ed77f45583bb75dccf99c4599e75c1e93eee7b1a69a07a20aff",
+      "pairs": 120,
+      "physical_equivalence_pass": true,
+      "initial_comparison_sha256": "506bfcefd425a321f249b7fb41ad00785542dc0ced2e26fde438f927f2b8e48b"
+    },
+    "source_proof_experiment": "C50-E1",
+    "source_proof_completion_sha256": "7953c95b193b80f1f89b93920fe5e78f37a1504aa0a5b325b3d2f37126ea490a"
+  }
+}

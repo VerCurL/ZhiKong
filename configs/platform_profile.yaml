@@ -1,0 +1,60 @@
+# 平台标定参数。距离、高度使用米，时间使用秒。
+units:
+  # 英尺转换为米，用于观测编码和平台数据单位换算。
+  feet_to_meters: 0.3048
+  # 地球表面每经度/纬度的近似米数，用于经纬度距离换算。
+  earth_meters_per_degree: 111195.0
+battlefield:
+  # Public 4v4 scenario geometry; never inferred from enemy state.
+  center_latitude_deg: 0.0
+  center_longitude_deg: 0.0
+  width_m: 200000.0
+  height_m: 200000.0
+limits:
+  # 单场比赛的最长持续时间；到时后按平台状态结束战斗。
+  battle_seconds: 900
+  # 飞机越界后允许继续运行的宽限时间。
+  boundary_grace_seconds: 5
+  # 飞机允许的最高高度。
+  maximum_altitude_m: 11000
+  # 我方飞机可编码的敌机探测距离。
+  enemy_detection_m: 50000
+  # 我方飞机可编码的来袭导弹探测距离。
+  missile_detection_m: 20000
+  # CRM（超视距/雷达）锁定的最大距离。
+  crm_lock_m: 37040
+  # ACM（近距格斗）锁定的最大距离。
+  acm_lock_m: 18520
+  # AMRAAM（远距弹）的最大允许发射距离。
+  amraam_launch_m: 40000
+  # SRAAM（近距弹）的最大允许发射距离。
+  sraam_launch_m: 10000
+  # 低于此高度时触发安全高度相关惩罚或限制。
+  minimum_safe_altitude_m: 1500
+aircraft:
+  # 飞机初始生命值，同时用于生命值归一化。
+  initial_life: 200
+  # 每架飞机初始可用的近距弹数量。
+  sraam_capacity: 2
+  # 每架飞机初始可用的远距弹数量。
+  amraam_capacity: 4
+weapon:
+  # AimMode=0: AIM-9M / ACM；已在当前平台切换测试中核验。
+  aim_mode_short: 0
+  # AimMode=1: AIM-120B / CRM；已在当前平台雷达锁定测试中核验。
+  aim_mode_long: 1
+  # 发射导弹是否必须先满足锁定条件。
+  require_lock: true
+simulation:
+  # 只校验当前原始报文中的存活飞机时间；允许的双Socket时间差（秒）。
+  timestamp_tolerance_seconds: 0.001
+  # 非终局时间未推进时，最多追加多少次保持机动的交互；不重复发弹或切换。
+  max_stalled_steps: 3
+  # 仅用于估计评估步数上限；不补造平台缺失或未推进的时间。
+  decision_seconds_fallback: 0.2
+  # 战斗达到 battle_seconds 后，等待空中导弹结算的最长额外时间。
+  max_missile_overtime_seconds: 90
+  # 评估模式的安全步数上限，用于避免异常平台状态无限运行。
+  evaluation_safety_steps: 20000
+  # 评估步数上限计算中额外增加的安全步数。
+  evaluation_step_margin: 100

@@ -1,0 +1,55 @@
+{
+  "schema": "competition-eas-5hz-cascade-pid-candidate-v1",
+  "status": "unvalidated_initial_eas_5hz_gains",
+  "scope": "New 5 Hz EAS upright near-trim candidate; no platform flight or high-maneuver claim.",
+  "sign_convention": "A positive tends to positive p; E negative tends to positive q; R positive tends to negative yaw moment. Beta correction is +K*(beta_ref-beta), a near-trim kinematic inference requiring plant verification.",
+  "gain_units": {
+    "attitude_kp": "1/s",
+    "rate_kp": "normalized command/(rad/s)",
+    "rate_ki": "normalized command/rad",
+    "rate_kd": "normalized command/(rad/s^2)",
+    "beta_kp": "normalized command/rad",
+    "beta_ki": "normalized command/(rad*s)",
+    "speed_kp": "normalized command/(m/s)",
+    "speed_ki": "normalized command/m",
+    "integral_limit_command": "normalized physical command contribution"
+  },
+  "derivative_filter_tau_sec": 0.1,
+  "roll": {
+    "attitude_kp": 1.0,
+    "rate_kp": 0.4,
+    "rate_ki": 0.08,
+    "rate_kd": 0.01,
+    "rate_limit_radps": 0.5,
+    "integral_limit_command": 0.2
+  },
+  "pitch": {
+    "attitude_kp": 0.8,
+    "rate_kp": 2.0,
+    "rate_ki": 0.25,
+    "rate_kd": 0.02,
+    "rate_limit_radps": 0.3,
+    "integral_limit_command": 0.3
+  },
+  "yaw": {
+    "beta_kp": 0.5,
+    "beta_ki": 0.04,
+    "rate_kp": 0.1,
+    "integral_limit_command": 0.15
+  },
+  "speed": {
+    "kp": 0.023627101866982084,
+    "ki": 0.003150280248930945,
+    "integral_limit_command": 0.25
+  },
+  "candidate_basis": {
+    "center_tas_mps": 160.02,
+    "center_eas_mps": 101.590961664,
+    "fixed_density_local_speed_gain_ratio": 1.5751401244654724,
+    "control_dt_sec": 0.2,
+    "angle_and_rate_gains": "historical initial candidate values; new 5 Hz validation required",
+    "filter_tau_sec": "initial 0.1 retained explicitly; not established at 5 Hz",
+    "integration": "only measured body rates, beta and EAS errors; no height integrator",
+    "frozen_historical_sources_modified": false
+  }
+}

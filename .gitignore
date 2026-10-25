@@ -1,0 +1,66 @@
+# Existing project exclusions
+/files/
+/platform/
+/submission/
+/results/
+/result/
+/docs/
+
+# Local editor and IDE settings
+.idea/
+.vscode/
+.vs/
+*.iml
+
+# Python bytecode and development caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.ipynb_checkpoints/
+.cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Local virtual environments
+.venv/
+venv/
+env/
+.conda/
+
+# Python packaging output
+/build/
+/dist/
+*.egg-info/
+
+# Local environment variables (keep reusable examples)
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Temporary files, logs and simulator recordings
+/tmp/
+/temp/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+*.log
+*.log.*
+*.tfevents.*
+*.acmi
+*.acmi.zip
+
+# Operating system metadata
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini

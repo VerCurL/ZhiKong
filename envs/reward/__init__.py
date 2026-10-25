@@ -1,0 +1,1 @@
+"""Competition reward functions."""

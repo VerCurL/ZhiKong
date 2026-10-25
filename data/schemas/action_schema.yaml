@@ -1,0 +1,29 @@
+heads:
+  # Same order and maneuver choices as LAGCFC HierarchicalMultipleCombatTask.
+  altitude: [climb, hold, descend]
+  turn: [left_30, left_15, hold, right_15, right_30]
+  speed: [accelerate, hold, slow]
+  # High-level requests; these indices are NOT fcs/weapon-launch values.
+  weapon: [none, sraam, amraam]
+neutral_action: [1, 2, 1, 0]
+flight_controller:
+  model_path: envs/model/baseline/baseline_model.pt
+  delta_altitude_m: [100.0, 0.0, -100.0]
+  delta_heading_deg: [-30.0, -15.0, 0.0, 15.0, 30.0]
+  delta_speed_mps: [17.0, 0.0, -17.0]
+  observation_scales:
+    altitude_error_m: 1000.0
+    altitude_m: 5000.0
+    speed_mps: 340.0
+    clip: 10.0
+  throttle_min: 0.4
+  throttle_max: 0.9
+platform_fields:
+  - fcs/aileron-cmd-norm
+  - fcs/elevator-cmd-norm
+  - fcs/rudder-cmd-norm
+  - fcs/throttle-cmd-norm
+  - fcs/weapon-launch
+  - switch-missile
+  - switch-acmType
+  - change-target

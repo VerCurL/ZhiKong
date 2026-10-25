@@ -1,0 +1,33 @@
+# 单场训练/评估场景配置。
+# 当前场景为红方 4 架飞机对蓝方 4 架飞机。
+# 所有经纬度字段单位为度，高度单位为英尺，速度单位为英尺/秒，角度单位为度。
+aircraft_per_side: 4
+# 平台状态中红方飞机的固定编号，顺序对应策略输出的 4 个飞机槽位。
+red_ids: [red_0, red_1, red_2, red_3]
+# 平台状态中蓝方飞机的固定编号。
+blue_ids: [blue_0, blue_1, blue_2, blue_3]
+initialization:
+  # 每方飞机初始位置经度分布范围的基础尺度。
+  longitude_extent_deg: 0.6
+  # 经度范围的随机缩放下限；实际缩放在该下限和 1.0 之间随机取值。
+  longitude_scale_min: 0.75
+  # 初始纬度随机范围下限。
+  latitude_min_deg: -0.25
+  # 初始纬度随机范围上限。
+  latitude_max_deg: 0.25
+  # 官方初始化中同方相邻飞机的纬度间隔；进场阵型不改变此初始化间隔。
+  formation_spacing_deg: 0.05
+  # 初始高度随机范围下限。
+  altitude_min_ft: 24000
+  # 初始高度随机范围上限。
+  altitude_max_ft: 32000
+  # 每方共用一个初始速度，按官方生成器在此范围内随机。
+  speed_min_fps: 450
+  # 初始速度随机范围上限。
+  speed_max_fps: 600
+  # 默认红方位于左侧时的航向；训练交换出生侧时同步镜像航向。
+  red_heading_deg: 90
+  # 默认蓝方位于右侧时的航向；训练交换出生侧时同步镜像航向。
+  blue_heading_deg: 270
+  # 是否要求平台保存每场比赛回放；训练时必须关闭以避免产生大量文件。
+  save_replay: false

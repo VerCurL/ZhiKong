@@ -1,0 +1,5 @@
+numpy>=1.24,<3
+PyYAML>=6,<7
+torch>=2.1,<3
+# Only imported by the offline reward plotting script.
+matplotlib>=3.7,<4
