@@ -20,6 +20,9 @@ communication_mode: dual
 control_side: red
 # 固定飞控模型：baseline 为 LAGCFC 神经飞控，pid 为 C50-M1 PID。
 flight_controller: pid
+# 训练专用开局：直接初始化到约200秒后的战斗区域，评估/测试入口不读取这些字段。
+training_start_mode: combat_start
+combat_start_seconds: 200
 # 最大训练轮数；一轮包含完整采样阶段和 PPO 更新阶段。
 max_updates: 1000
 # 每轮采样必须完成的完整对战总局数；全部完成后才进入训练阶段。

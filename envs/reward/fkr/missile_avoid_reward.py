@@ -7,9 +7,12 @@ from ...utils.utils import clip
 # Other values are provisional training preferences, not guaranteed safe envelopes.
 THREAT_POLICY = {"short_lifetime_s": 60.0, "medium_lifetime_s": 80.0,
                  "release_margin_s": 3.0, "imminent_margin_s": 2.0}
-WEIGHT = 0.010
-MEDIUM_SAFE_DISTANCE_M = 12000.0
-MEDIUM_DISTANCE_WIDTH_M = 3000.0
+WEIGHT = 0.014
+# Measured at a high-speed probe condition; use these as directional priors,
+# not exact platform invariants for every 4v4 initial speed.
+MEDIUM_HEADON_NEZ_M = 37500.0
+MEDIUM_TAIL_NEZ_M = 26500.0
+MEDIUM_DISTANCE_WIDTH_M = 4500.0
 CLOSING_RATE_SCALE = 400.0
 DISTANCE_RATE_SCALE = 400.0
 SHORT_WEIGHTS = (0.8, 1.2, 0.8)
@@ -38,6 +41,14 @@ class MissileAvoidReward:
     def reset(self):
         self.previous = None
 
+    @staticmethod
+    def _medium_nez(missile):
+        # AO≈0 means the threat is in front of the aircraft; AO≈pi is a
+        # rear-quarter/tail threat. Interpolate the measured head-on/tail
+        # boundaries so the reward does not hard-switch at 90 degrees.
+        front = max(0.0, min(1.0, (1.0+math.cos(missile["ao"]))/2.0))
+        return MEDIUM_TAIL_NEZ_M+(MEDIUM_HEADON_NEZ_M-MEDIUM_TAIL_NEZ_M)*front
+
     def compute(self, frame, dt):
         missile = frame["missile"]
         if not frame["alive"] or missile is None:
@@ -53,6 +64,11 @@ class MissileAvoidReward:
         if missile["kind"] == 0:
             lateral = math.sin(missile["ao"])**2
             return clip(sum(w*v for w, v in zip(SHORT_WEIGHTS, (lateral, dc, dr))), -2.5, 2.5)/2.5
-        back = -math.cos(missile["ao"])
-        separation = math.tanh((missile["distance"]-MEDIUM_SAFE_DISTANCE_M)/MEDIUM_DISTANCE_WIDTH_M)
-        return clip(sum(w*v for w, v in zip(MEDIUM_WEIGHTS, (back, separation, dc, dr))))
+        nez = self._medium_nez(missile)
+        separation = math.tanh((missile["distance"]-nez)/MEDIUM_DISTANCE_WIDTH_M)
+        # The measured medium-missile tests favor full-throttle energy
+        # preservation. Do not teach strong lateral-turn shaping inside NEZ.
+        energy = math.tanh((frame["body_speed"]-170.0)/35.0)
+        if missile["distance"] <= nez:
+            return clip(.65*energy+.20*dc+.15*dr)
+        return clip(.30*separation+.25*energy+.25*dc+.20*dr)

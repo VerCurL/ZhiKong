@@ -11,7 +11,7 @@ from .attack_window_reward import AttackWindowReward
 from .missile_avoid_reward import MissileAvoidReward
 from .energy_reward import EnergyReward
 
-REWARD_VERSION = 3
+REWARD_VERSION = 4
 DENSE_CLIP_PER_SECOND = .02
 DENSE_NAMES = ("safety", "distance", "attack", "defense", "energy")
 REWARD_METRIC_COLUMNS = (
@@ -89,7 +89,9 @@ class MultipleCombatReward:
                     signals["defense"] = parts["defense"].compute(frame, dt)
                     if threatened:
                         for name in ("distance", "attack", "energy"):
-                            parts[name].reset()
+                            if name != "energy":
+                                parts[name].reset()
+                        signals["energy"] = parts["energy"].compute(frame, dt)
                     else:
                         for name in ("distance", "attack", "energy"):
                             signals[name] = parts[name].compute(frame, dt)

@@ -41,8 +41,8 @@ from envs.model import FLIGHT_CONTROLLER_NAMES
 # ======================= 模型路径配置 =======================
 # 相对路径以项目根目录为准；也可以填写绝对路径。
 # 例如：r"result/4v4/mappo/run-20261021-153000-a1b2c3d4/actor_latest.pt"
-RED_MODEL_PATH = "results/4v4/mappo/run-20261025-005445/actor_3.pt"
-BLUE_MODEL_PATH = "results/4v4/mappo/run-20261025-005445/actor_3.pt"
+RED_MODEL_PATH = "results/4v4/mappo/run-20261025-005445/actor_latest.pt"
+BLUE_MODEL_PATH = "results/4v4/mappo/run-20261025-005445/actor_latest.pt"
 # ===========================================================
 
 

@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import argparse
+import math
 
 import yaml
 
@@ -31,6 +32,10 @@ def validate_configs(configs):
     train = configs["train_mappo"]
     if train.get("flight_controller", "baseline") not in ("baseline", "pid"):
         raise ValueError("flight_controller must be baseline or pid")
+    if train.get("training_start_mode", "official") not in ("official", "combat_start"):
+        raise ValueError("training_start_mode must be official or combat_start")
+    if not math.isfinite(float(train.get("combat_start_seconds", 200.0))) or float(train.get("combat_start_seconds", 200.0)) < 0:
+        raise ValueError("combat_start_seconds must be nonnegative")
     for phase in ("sampling", "training"):
         threads = train["torch_threads"][phase]
         if isinstance(threads, bool) or not isinstance(threads, int) or threads <= 0:

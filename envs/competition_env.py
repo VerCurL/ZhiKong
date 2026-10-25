@@ -1,6 +1,7 @@
 """Dual-socket environments and a pool of independent platform instances."""
 
 from copy import deepcopy
+import math
 import random
 import os
 import socket
@@ -13,7 +14,7 @@ import numpy as np
 from comm_interface import env as PlatformClient
 from .action_adapter import ActionAdapter
 from .control_rules import ControlRules
-from .formations import resolve_formations
+from .formations import resolve_formations, FORMATION_SCHEMA
 from .utils.observations import decode_actor
 from .model.flight_controller import FrozenFlightController
 from .action_mask import masks_for_side
@@ -27,7 +28,8 @@ class CompetitionEnv:
     def __init__(self, profile, scenario, side="red", host=None,
                  port=None, red_port=None, blue_port=None, seed=1, client=None,
                  connect_timeout=None, socket_timeout=None, flight_controller_path=None, flight_actor=None,
-                 flight_controller="baseline"):
+                 flight_controller="baseline", training_start_mode="official",
+                 combat_start_seconds=200.0):
         if side not in ("red", "blue"):
             raise ValueError("side must be red or blue")
         self.num_agents = int(scenario["aircraft_per_side"])
@@ -36,6 +38,12 @@ class CompetitionEnv:
         self.profile = profile
         self.scenario = scenario
         self.side = side
+        if training_start_mode not in ("official", "combat_start"):
+            raise ValueError("training_start_mode must be official or combat_start")
+        self.training_start_mode = training_start_mode
+        self.combat_start_seconds = float(combat_start_seconds)
+        if self.combat_start_seconds < 0:
+            raise ValueError("combat_start_seconds must be nonnegative")
         self.rng = random.Random(seed)
         self.seed_formations(seed)
         self.formations = {}
@@ -243,6 +251,52 @@ class CompetitionEnv:
                 }
         return result
 
+    def _combat_start_initialization(self, learner_spawn_side, formations):
+        """Project official random spawns into a training-only combat state."""
+        request = self._initial_attributes(None, initial=self.state is None,
+                                           learner_spawn_side=learner_spawn_side)
+        field, units = self.profile["battlefield"], self.profile["units"]
+        scale = float(units["earth_meters_per_degree"])
+        cos_lat = math.cos(math.radians(float(field["center_latitude_deg"])))
+        positions, centers, forwards, speeds = {}, {}, {}, {}
+        for side in ("red", "blue"):
+            rows = request[side]
+            values = [np.array([
+                (float(plane["ic/lat-geod-deg"])-field["center_latitude_deg"])*scale,
+                (float(plane["ic/long-gc-deg"])-field["center_longitude_deg"])*scale*cos_lat,
+            ]) for plane in rows.values()]
+            start_center = np.mean(values, axis=0)
+            distance = float(np.linalg.norm(start_center))
+            forward = -start_center/max(distance, 1e-9)
+            speed = float(next(iter(rows.values()))["ic/u-fps"])*float(units["feet_to_meters"])
+            centers[side] = start_center + forward*speed*self.combat_start_seconds
+            forwards[side] = forward
+            speeds[side] = speed
+            positions[side] = values
+
+        for side in ("red", "blue"):
+            rows = request[side]
+            start_center = np.mean(positions[side], axis=0)
+            relative = [value-start_center for value in positions[side]]
+            template = FORMATION_SCHEMA["templates"].get(formations.get(side))
+            if template is not None:
+                params = FORMATION_SCHEMA["parameters"]
+                right = np.array([-forwards[side][1], forwards[side][0]])
+                local = np.asarray(template, dtype=np.float64)
+                relative = [local[index, 0]*params["depth_m"]*forwards[side]+
+                            local[index, 1]*params["lateral_span_m"]*right
+                            for index in range(self.num_agents)]
+            # `forward` already points from the projected spawn toward the
+            # map center; use it directly so the nose follows the travel path.
+            heading = math.degrees(math.atan2(forwards[side][1], forwards[side][0])) % 360.0
+            for index, plane in enumerate(rows.values()):
+                point = centers[side]+relative[index]
+                plane["ic/lat-geod-deg"] = field["center_latitude_deg"]+point[0]/scale
+                plane["ic/long-gc-deg"] = field["center_longitude_deg"]+point[1]/(scale*cos_lat)
+                plane["ic/psi-true-deg"] = heading
+                plane["ic/u-fps"] = speeds[side]/float(units["feet_to_meters"])
+        return request
+
     def _validate_state(self, state):
         if not isinstance(state, dict) or "red" not in state or "blue" not in state:
             raise RuntimeError("Platform returned no valid 4v4 state")
@@ -310,8 +364,16 @@ class CompetitionEnv:
     def reset_training(self, learner_spawn_side):
         """Reset one sampled battle at its assigned map side, keeping team IDs."""
         if isinstance(learner_spawn_side, dict):
-            return self.reset(learner_spawn_side=learner_spawn_side["spawn_side"],
-                              formations=learner_spawn_side["formations"])
+            spawn_side = learner_spawn_side["spawn_side"]
+            formations = learner_spawn_side["formations"]
+            if self.training_start_mode == "combat_start":
+                result = self.reset(initialization=self._combat_start_initialization(spawn_side, formations),
+                                    formations=formations)
+                result[2]["training_start_mode"] = "combat_start"
+                return result
+            result = self.reset(learner_spawn_side=spawn_side, formations=formations)
+            result[2]["training_start_mode"] = "official"
+            return result
         return self.reset(learner_spawn_side=learner_spawn_side)
 
     def route_actions(self, actions):
@@ -450,6 +512,8 @@ class ParallelEnvironments:
                     socket_timeout=launch["socket_timeout_seconds"],
                     flight_actor=self.baseline_actor,
                     flight_controller=self.flight_controller_name,
+                    training_start_mode=config.get("training_start_mode", "official"),
+                    combat_start_seconds=config.get("combat_start_seconds", 200.0),
                 ))
             self.envs = [future.result() for future in futures]
             self.encoder = self.envs[0].encoder

@@ -4,7 +4,9 @@ from ...utils.utils import clip, interval_distance
 
 WEIGHT = 0.003
 PROGRESS_SPEED_MPS = 300.0
-DISTANCE_BANDS = {"medium": (24000.0, 35000.0), "short": (4000.0, 9000.0)}
+# CRM/AMRAAM should be used before the measured medium-missile NEZ, rather
+# than rewarding the aircraft for closing into the old 24 km lower bound.
+DISTANCE_BANDS = {"medium": (30000.0, 37040.0), "short": (4000.0, 9000.0)}
 
 
 class DistanceReward:
